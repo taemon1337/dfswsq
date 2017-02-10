@@ -1,0 +1,47 @@
+version: "2"
+networks:
+  working:
+    external: true
+services:
+  wsqs:
+    build: ./server
+    volumes:
+      - ./server:/work
+      - ./data/server:/data
+    working_dir: /work
+    command: node run.js
+    networks:
+      - working
+  client:
+    build: ./client
+    volumes:
+      - ./client:/work
+      - ./data/zip:/zip
+    working_dir: /work
+    command: node run.js /zip/ace-master.zip
+    depends_on:
+      - wsqs
+    networks:
+      - working
+    depends_on:
+      - wsqs
+  worker_zip:
+    build: ./worker_zip
+    volumes:
+      - ./worker_zip:/work
+    working_dir: /work
+    command: node run.js
+    networks:
+      - working
+    depends_on:
+      - wsqs
+  worker_unzip:
+    build: ./worker_unzip
+    volumes:
+      - ./worker_unzip:/work
+    working_dir: /work
+    command: node run.js
+    networks:
+      - working
+    depends_on:
+      - wsqs
