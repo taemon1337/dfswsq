@@ -12,19 +12,6 @@ services:
     command: node run.js
     networks:
       - working
-  client:
-    build: ./client
-    volumes:
-      - ./client:/work
-      - ./data/zip:/zip
-    working_dir: /work
-    command: node run.js /zip/ace-master.zip
-    depends_on:
-      - wsqs
-    networks:
-      - working
-    depends_on:
-      - wsqs
   worker_zip:
     build: ./worker_zip
     volumes:
@@ -41,6 +28,22 @@ services:
       - ./worker_unzip:/work
     working_dir: /work
     command: node run.js
+    networks:
+      - working
+    depends_on:
+      - wsqs
+  test:
+    build: ./test
+    volumes:
+      - ./test:/work
+      - ./data/zip:/zip
+    working_dir: /work
+#    command: node run.js zip /zip/asv.txt
+    command: node run.js unzip /zip/asv.zip
+#    command: node run.js unzip /zip/ace-master.zip
+#    command: node test_zip_unzip.js /zip/test.txt
+    depends_on:
+      - wsqs
     networks:
       - working
     depends_on:
