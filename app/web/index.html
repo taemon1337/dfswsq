@@ -1,0 +1,107 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <link rel="stylesheet" href="css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" />
+
+  <link rel="stylesheet" href="css/bootstrap-theme.min.css" integrity="sha256-ZT4HPpdCOt2lvDkXokHuhJfdOKSPFLzeAJik5U/Q+l4=" />
+
+  <script type="text/javascript" src="js/jquery.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="></script>
+
+  <script src="js/bootstrap.js" integrity="sha256-Cr6N6zNN4bp0OwTQOZ6Z66M2r+2dpy/EwKMCyZ+SOMg="></script>
+
+  <title>DFS Inbox</title>
+  <meta name="description" content="DFS Inbox">
+  <meta name="author" content="TS">
+</head>
+
+<body>
+  <form class="form form-horizontal" action="." method="POST" enctype="multipart/form-data">
+    <div class="hidden form-group">
+      <label class="control-label col-xs-2"></label>
+      <div class="col-xs-8">
+        <div class="alert alert-success alert-dismissable" role="alert">
+          <button type="button" class="close" data-dismiss="alert">&times;</button>
+          MESSAGE
+        </div>
+      </div>
+      <div class="col-xs-2">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="control-label col-xs-3"></label>
+      <div class="col-xs-5">
+        <h3>DFS Inbox</h3>
+      </div>
+      <div class="col-xs-4">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="control-label col-xs-3">Category</label>
+      <div class="col-xs-5">
+        <select class="form-control" name="category" required>
+          <option disabled selected value>-- select an option --</option>
+          <option value="evidence">Evidence</option>
+          <option value="other">File Transfer (non evidence)</option>
+          <option value="other">Other</option>
+        </select>
+      </div>
+      <div class="col-xs-4 help-block">
+        The category will determine what type of handling the attachments receive
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="control-label col-xs-3">
+        Reference Number
+      </label>
+      <div class="col-xs-5">
+        <input type="text" class="form-control" name="reference_id" placeholder="case number, reference id, etc..." required />
+      </div>
+      <div class="col-xs-4 help-block">
+        If evidence, this should be the full case number
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="control-label col-xs-3">
+        Attached Files
+      </label>
+      <div class="col-xs-5">
+        <input type="file" name="attachment" multiple required />
+      </div>
+      <div class="col-xs-4 help-block">
+        If attaching multiple documents, they will be treated as a group of documents
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="control-label col-xs-3">
+        Additional Information
+      </label>
+      <div class="col-xs-5">
+        <textarea name="message" class="form-control" placeholder="enter any additional information needed..." rows="4"></textarea>
+      </div>
+      <div class="col-xs-4 help-block">
+      </div>
+    </div>
+
+
+    <div class="form-group">
+      <label class="control-label col-xs-3">
+
+      </label>
+      <div class="col-xs-5">
+        <button class="btn btn-primary" type="submit">Upload Documents</button>
+        <a href="." target="__blank__" class="btn btn-default">Add Item</a>
+      </div>
+      <div class="col-xs-4 help-block">
+      </div>
+    </div>
+  </form>
+</body>
+</html>

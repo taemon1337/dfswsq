@@ -64,6 +64,7 @@ iqueue.process(function(task, callback) {
                 if(done) {
                   callback(done)
                 } else {
+                  task.touch()
                   oqueue.add(result, function(err) {
                     if(err) {
                       console.warn("Error from result queue: ", result, err)
